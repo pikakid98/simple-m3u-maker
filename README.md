@@ -3,4 +3,5 @@ A simple program that makes making M3U playlists easier. Ever been told to just 
 
 <h1>Current Issues</h1>
 • Files that contain invalid characters such as Japanese will be broken but can be easily fixed with a text editor and setting the file as Unicode manually
+
 • Sometimes it may crash when opening for unknown reasons
