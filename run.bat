@@ -1,19 +1,19 @@
 @ECHO OFF
-;Title Simple M3U Maker (v2.2) [By Pikakid98]
-IF EXIST "%tmp%\SM3UM-music.txt" (
-GOTO Mus
-)
-
-IF EXIST "%tmp%\SM3UM-emu.txt" (
-GOTO MTI
-)
-
+;Title Simple M3U Maker (v2.2.1) [By Pikakid98]
 IF EXIST "%tmp%\SM3UM-check.txt" (
 GOTO Check
 ) ELSE (
-GOTO Main
+GOTO File Check
 )
 
+:File Check
+IF EXIST "%tmp%\SM3UM-music.txt" (
+GOTO Mus-M3U
+)
+
+IF EXIST "%tmp%\SM3UM-emu.txt" (
+GOTO MTI-M3U
+)
 
 :Main
 ECHO This tool can create an M3U playlist with either music or
@@ -33,14 +33,6 @@ IF ERRORLEVEL 1 GOTO Mus
 ::----------------------------------------------------------
 :Mus
 CLS
-IF EXIST "%tmp%\SM3UM-music.txt" (
-del %tmp%\SM3UM-music.txt
-GOTO Main
-) ELSE (
-GOTO Mus-Main
-)
-
-:Mus-Main
 IF EXIST "%userprofile%\Downloads\M3U Maker" (
 GOTO Mus-M3U
 ) ELSE (
@@ -81,14 +73,6 @@ exit
 ::----------------------------------------------------------
 :MTI
 CLS
-IF EXIST "%tmp%\SM3UM-emu.txt" (
-del %tmp%\SM3UM-emu.txt
-GOTO Main
-) ELSE (
-GOTO MTI-Main
-)
-
-:MTI-Main
 IF EXIST "%userprofile%\Downloads\M3U Maker" (
 GOTO MTI-M3U
 ) ELSE (
