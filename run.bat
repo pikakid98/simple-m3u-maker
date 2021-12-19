@@ -1,13 +1,15 @@
 @ECHO OFF
-;Title Simple M3U Maker (v2.1) [By Pikakid98]
+;Title Simple M3U Maker (v2.2) [By Pikakid98]
 IF EXIST "%tmp%\SM3UM-music.txt" (
 GOTO Mus
-) ELSE (
-GOTO Main
 )
 
 IF EXIST "%tmp%\SM3UM-emu.txt" (
 GOTO MTI
+)
+
+IF EXIST "%tmp%\SM3UM-check.txt" (
+GOTO Check
 ) ELSE (
 GOTO Main
 )
@@ -31,6 +33,14 @@ IF ERRORLEVEL 1 GOTO Mus
 ::----------------------------------------------------------
 :Mus
 CLS
+IF EXIST "%tmp%\SM3UM-music.txt" (
+del %tmp%\SM3UM-music.txt
+GOTO Main
+) ELSE (
+GOTO Mus-Main
+)
+
+:Mus-Main
 IF EXIST "%userprofile%\Downloads\M3U Maker" (
 GOTO Mus-M3U
 ) ELSE (
@@ -43,6 +53,7 @@ mkdir "%userprofile%\Downloads\M3U Maker"
 echo msgbox "m3u Template Created. Drop your music here and rerun the .exe again" >> "%tmp%\msg.vbs"
 START "" "%tmp%\msg.vbs"
 echo This file is worthless > %tmp%\SM3UM-music.txt
+timeout 2
 start /wait "" %windir%\explorer.exe "%userprofile%\Downloads\M3U Maker"
 del "%tmp%\msg.vbs"
 exit
@@ -57,6 +68,8 @@ GOTO Mus-M3U-1
 
 :Mus-M3U-1
 cd "%userprofile%\Downloads\M3U Maker"
+chcp 65001
+SET message=Gép3
 dir /B > "%tmp%\album.m3u"
 mkdir "Your M3U"
 move "%tmp%\album.m3u" "Your M3U\album.m3u"
@@ -68,6 +81,14 @@ exit
 ::----------------------------------------------------------
 :MTI
 CLS
+IF EXIST "%tmp%\SM3UM-emu.txt" (
+del %tmp%\SM3UM-emu.txt
+GOTO Main
+) ELSE (
+GOTO MTI-Main
+)
+
+:MTI-Main
 IF EXIST "%userprofile%\Downloads\M3U Maker" (
 GOTO MTI-M3U
 ) ELSE (
@@ -79,6 +100,7 @@ mkdir "%userprofile%\Downloads\M3U Maker"
 echo msgbox "m3u Template Created. Drop your .cue track files here and rerun the .exe again (Please only use the .cue files as they are only what this tool looks for)" >> "%tmp%\msg.vbs"
 START "" "%tmp%\msg.vbs"
 echo This file is worthless > %tmp%\SM3UM-emu.txt
+timeout 2
 start /wait "" %windir%\explorer.exe "%userprofile%\Downloads\M3U Maker"
 del "%tmp%\msg.vbs"
 exit
@@ -92,6 +114,8 @@ GOTO MTI-M3U-1
 
 :MTI-M3U-1
 cd "%userprofile%\Downloads\M3U Maker"
+chcp 65001
+SET message=Gép3
 dir *.cue /B  > "%tmp%\iso.m3u"
 mkdir "Your M3U"
 move "%tmp%\iso.m3u" "Your M3U\iso.m3u"
@@ -101,6 +125,7 @@ exit
 
 ::----------------------------------------------------------
 :Cleanup
+echo This file is worthless > %tmp%\SM3UM-check.txt
 del "%tmp%\SM3UM-emu.txt"
 del "%tmp%\SM3UM-music.txt"
 exit
@@ -108,6 +133,20 @@ exit
 :Error
 echo msgbox "Oops!. An M3U has already been created here. Please clean the folder up first" >> "%tmp%\msg.vbs"
 START "" "%tmp%\msg.vbs"
+timeout 2
 start /wait "" %windir%\explorer.exe "%userprofile%\Downloads\M3U Maker\Your M3U"
 del "%tmp%\msg.vbs"
 exit
+
+:Check
+IF EXIST "%userprofile%\Downloads\M3U Maker" (
+echo msgbox "Please delete the created folder first" >> "%tmp%\msg.vbs"
+START "" "%tmp%\msg.vbs"
+timeout 2
+start /wait "" %windir%\explorer.exe "%userprofile%\Downloads\M3U Maker"
+del "%tmp%\msg.vbs"
+exit
+) ELSE (
+del "%tmp%\SM3UM-check.txt"
+GOTO Main
+)
