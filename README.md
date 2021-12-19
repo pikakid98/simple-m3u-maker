@@ -1,6 +1,12 @@
 # Simple M3U Maker
 A simple program that makes making M3U playlists easier. Ever been told to just make an M3U file but don't know how to?.. Or are you just too damn lazy to copy your 100+ songs into a playlist?. Well here is a solution!
 
+<h1>Building Instructions</h1>
+The main .exe is built with Windows' built in Iexpress tool. The SED file does MOST of the work. However you should NOT build instantly as you should select the run.bat file yourself.
+
+[Resource Hacker](http://angusj.com/resourcehacker/)
+was used to replace the icon
+
 <h1>Known Bugs</h1>
 
 [Click here for the bug tracker](https://pikakid98.github.io/simple-m3u-maker/known-bugs)
