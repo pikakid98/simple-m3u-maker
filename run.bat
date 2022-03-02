@@ -1,5 +1,5 @@
 @ECHO OFF
-;Title Simple M3U Maker (v2.2.1) [By Pikakid98]
+;Title Simple M3U Maker (v2.2.2) [By Pikakid98]
 IF EXIST "%tmp%\SM3UM-check.txt" (
 GOTO Check
 ) ELSE (
@@ -43,9 +43,8 @@ GOTO Mus-Folder
 :Mus-Folder
 mkdir "%userprofile%\Downloads\M3U Maker"
 echo msgbox "m3u Template Created. Drop your music here and rerun the .exe again" >> "%tmp%\msg.vbs"
-START "" "%tmp%\msg.vbs"
 echo This file is worthless > %tmp%\SM3UM-music.txt
-timeout 2
+START /wait "" "%tmp%\msg.vbs"
 start /wait "" %windir%\explorer.exe "%userprofile%\Downloads\M3U Maker"
 del "%tmp%\msg.vbs"
 exit
@@ -82,9 +81,8 @@ GOTO MTI-Folder
 :MTI-Folder
 mkdir "%userprofile%\Downloads\M3U Maker"
 echo msgbox "m3u Template Created. Drop your .cue track files here and rerun the .exe again (Please only use the .cue files as they are only what this tool looks for)" >> "%tmp%\msg.vbs"
-START "" "%tmp%\msg.vbs"
 echo This file is worthless > %tmp%\SM3UM-emu.txt
-timeout 2
+START /wait "" "%tmp%\msg.vbs"
 start /wait "" %windir%\explorer.exe "%userprofile%\Downloads\M3U Maker"
 del "%tmp%\msg.vbs"
 exit
@@ -116,8 +114,7 @@ exit
 
 :Error
 echo msgbox "Oops!. An M3U has already been created here. Please clean the folder up first" >> "%tmp%\msg.vbs"
-START "" "%tmp%\msg.vbs"
-timeout 2
+START /wait "" "%tmp%\msg.vbs"
 start /wait "" %windir%\explorer.exe "%userprofile%\Downloads\M3U Maker\Your M3U"
 del "%tmp%\msg.vbs"
 exit
@@ -125,8 +122,7 @@ exit
 :Check
 IF EXIST "%userprofile%\Downloads\M3U Maker" (
 echo msgbox "Please delete the created folder first" >> "%tmp%\msg.vbs"
-START "" "%tmp%\msg.vbs"
-timeout 2
+START /wait "" "%tmp%\msg.vbs"
 start /wait "" %windir%\explorer.exe "%userprofile%\Downloads\M3U Maker"
 del "%tmp%\msg.vbs"
 exit
