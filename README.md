@@ -10,4 +10,6 @@ was used to replace the icon
 
 # Known Bugs
 
-[Click here for the bug tracker](https://pikakid98.github.io/simple-m3u-maker/known-bugs)
+• If your folder contains a cover image (ie “cover.jpg” or “coverimage.png”) then it will include it in the playlist (Not breaking)
+\
+• If you delete the folder right after selecting an option, it opens your documents folder instead
